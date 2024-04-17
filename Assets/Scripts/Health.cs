@@ -1,11 +1,12 @@
-using TMPro;
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _health;
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private TextMeshPro _velue;
+    [SerializeField, Range(0, 100)] private int _health;
+    [SerializeField, Range(0, 100)] private int _maxHealth;
+
+    public event Action HealthCheck;
 
     public int HealthPlayer => _health;
 
@@ -17,6 +18,8 @@ public class Health : MonoBehaviour
         {
             _health = 0;
         }
+
+        HealthCheck?.Invoke();
     }
 
     public void SetHealth(int health)
@@ -25,5 +28,7 @@ public class Health : MonoBehaviour
 
         if (_health > _maxHealth)
             _health = _maxHealth;
+
+        HealthCheck?.Invoke();
     }
 }

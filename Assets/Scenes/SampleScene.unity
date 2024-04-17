@@ -513,8 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e4e2f545a4074e91b869d61abca2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 433397429}
   _healthPlayer: {fileID: 829934429}
+  _slider: {fileID: 433397429}
 --- !u!114 &433397429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1859284561}
   m_HandleRect: {fileID: 0}
@@ -745,8 +745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2809099b8d5498f4b97b3994e2266cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 829289083}
   _healthPlayer: {fileID: 829934429}
+  _slider: {fileID: 829289083}
 --- !u!114 &829289083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1561583109}
   m_HandleRect: {fileID: 0}
@@ -827,9 +827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01c0fa0cd38a42429461631fabf6b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 90
+  _health: 80
   _maxHealth: 100
-  _velue: {fileID: 0}
 --- !u!4 &829934430
 Transform:
   m_ObjectHideFlags: 0
@@ -856,6 +855,7 @@ GameObject:
   - component: {fileID: 953132389}
   - component: {fileID: 953132391}
   - component: {fileID: 953132390}
+  - component: {fileID: 953132392}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -925,6 +925,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953132388}
   m_CullTransparentMesh: 1
+--- !u!114 &953132392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953132388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e5397ff7ad82441a4351881c931b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPlayer: {fileID: 829934429}
 --- !u!1 &1096282404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,8 +1085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93293fbf30bf9054cae218ce5ecebd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velue: {fileID: 1096282406}
   _healthPlayer: {fileID: 829934429}
+  _velue: {fileID: 1096282406}
 --- !u!1 &1217734974
 GameObject:
   m_ObjectHideFlags: 0

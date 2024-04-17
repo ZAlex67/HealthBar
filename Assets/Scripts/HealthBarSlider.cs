@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarSlider : MonoBehaviour
+public class HealthBarSlider : HealthBar
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Health _healthPlayer;
 
-    private float _health;
-
-    private void Update()
+    protected override void HealthUpdate()
     {
-        _health = _healthPlayer.GetComponent<Health>().HealthPlayer;
+        base.HealthUpdate();
+
         _slider.value = _health;
     }
 }

@@ -1,17 +1,16 @@
 using TMPro;
 using UnityEngine;
 
-public class HealthBarText : MonoBehaviour
+public class HealthBarText : HealthBar
 {
     [SerializeField] private TextMeshProUGUI _velue;
-    [SerializeField] private Health _healthPlayer; 
 
-    private float _health;
     private string _maxHealth = "/100";
 
-    private void Update()
+    protected override void HealthUpdate()
     {
-        _health = _healthPlayer.GetComponent<Health>().HealthPlayer;
+        base.HealthUpdate();
+
         _velue.text = _health.ToString() + _maxHealth;
     }
 }
