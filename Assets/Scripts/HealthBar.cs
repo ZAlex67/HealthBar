@@ -1,28 +1,23 @@
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+public abstract class HealthBar : MonoBehaviour
 {
-    [SerializeField] protected Health _healthPlayer;
-
-    protected float _health;
+    [SerializeField] protected Health PlayerHealthPoint;
 
     private void Start()
     {
-        HealthUpdate();
+        OnHealthUpdated();
     }
 
     private void OnEnable()
     {
-        _healthPlayer.HealthCheck += HealthUpdate;
+        PlayerHealthPoint.CheckedHealth += OnHealthUpdated;
     }
 
     private void OnDisable()
     {
-        _healthPlayer.HealthCheck -= HealthUpdate;
+        PlayerHealthPoint.CheckedHealth -= OnHealthUpdated;
     }
 
-    protected virtual void HealthUpdate()
-    {
-        _health = _healthPlayer.GetComponent<Health>().HealthPlayer;
-    }
+    protected abstract void OnHealthUpdated();
 }

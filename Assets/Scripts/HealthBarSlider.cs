@@ -3,12 +3,17 @@ using UnityEngine.UI;
 
 public class HealthBarSlider : HealthBar
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] protected Slider _slider;
 
-    protected override void HealthUpdate()
+    protected virtual void ChangeMaxHealth()
     {
-        base.HealthUpdate();
+        _slider.maxValue = PlayerHealthPoint.MaxHealth;
+    }
 
-        _slider.value = _health;
+    protected override void OnHealthUpdated()
+    {
+        ChangeMaxHealth();
+
+        _slider.value = PlayerHealthPoint.CurrentHealth;
     }
 }

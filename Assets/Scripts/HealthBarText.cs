@@ -5,12 +5,8 @@ public class HealthBarText : HealthBar
 {
     [SerializeField] private TextMeshProUGUI _velue;
 
-    private string _maxHealth = "/100";
-
-    protected override void HealthUpdate()
+    protected override void OnHealthUpdated()
     {
-        base.HealthUpdate();
-
-        _velue.text = _health.ToString() + _maxHealth;
+        _velue.text = PlayerHealthPoint.CurrentHealth.ToString() + "/" + PlayerHealthPoint.MaxHealth;
     }
 }

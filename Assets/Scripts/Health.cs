@@ -6,29 +6,24 @@ public class Health : MonoBehaviour
     [SerializeField, Range(0, 100)] private int _health;
     [SerializeField, Range(0, 100)] private int _maxHealth;
 
-    public event Action HealthCheck;
+    public event Action CheckedHealth;
 
-    public int HealthPlayer => _health;
+    public int CurrentHealth => _health;
+    public int MaxHealth => _maxHealth;
 
     public void TakeHit(int damage)
     {
-        _health -= damage;
+        if (damage >= 0)
+            _health = Mathf.Clamp(_health -= damage, 0, _maxHealth);
 
-        if (_health <= 0)
-        {
-            _health = 0;
-        }
-
-        HealthCheck?.Invoke();
+        CheckedHealth?.Invoke();
     }
 
     public void SetHealth(int health)
     {
-        _health += health;
+        if (health >= 0)
+            _health = Mathf.Clamp(_health += health, 0, _maxHealth);
 
-        if (_health > _maxHealth)
-            _health = _maxHealth;
-
-        HealthCheck?.Invoke();
+        CheckedHealth?.Invoke();
     }
 }

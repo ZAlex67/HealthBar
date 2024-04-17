@@ -1,17 +1,14 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class HealthBarSliderSmooth : HealthBar
+public class HealthBarSliderSmooth : HealthBarSlider
 {
-    [SerializeField] private Slider _slider;
-
-    private float _coefficient = 20f;
+    private float _coefficient = 3f;
     private Coroutine _coroutine;
 
-    protected override void HealthUpdate()
+    protected override void OnHealthUpdated()
     {
-        base.HealthUpdate();
+        base.ChangeMaxHealth();
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -21,9 +18,9 @@ public class HealthBarSliderSmooth : HealthBar
 
     private IEnumerator ChangeHealthSmooth()
     {
-        while (_slider.value != _health)
+        while (_slider.value != PlayerHealthPoint.CurrentHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _health, _coefficient * Time.deltaTime);
+            _slider.value = Mathf.Lerp(_slider.value, PlayerHealthPoint.CurrentHealth, _coefficient * Time.deltaTime);
             yield return null;
         }
     }
